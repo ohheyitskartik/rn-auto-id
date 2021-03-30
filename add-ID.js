@@ -21,7 +21,6 @@ export default function transformer(file, api) {
     .find(j.JSXElement)
     .forEach(p => {
       if ((p.node.openingElement.name.name) && allowedElements.includes(p.node.openingElement.name.name)) {
-        i++
         if (
           !p.node.openingElement.attributes.some(
             attribute =>
@@ -39,7 +38,7 @@ export default function transformer(file, api) {
                     j.jsxIdentifier(defineElement),
                     j.literal(
                       removeSlashes(removeExtension(file.path).split('app/')[1]).toLowerCase()+"-"+(p.node.openingElement.name.name).toLowerCase()+'-'+
-                        i++
+                        ++i
                     )
                   )
                 ),
