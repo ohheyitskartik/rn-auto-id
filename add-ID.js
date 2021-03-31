@@ -29,6 +29,7 @@ export default function transformer(file, api) {
               attribute.name.name === defineElement
           )
         ) {
+          i++;
           j(p).replaceWith(
             j.jsxElement(
               j.jsxOpeningElement(
@@ -38,7 +39,7 @@ export default function transformer(file, api) {
                     j.jsxIdentifier(defineElement),
                     j.literal(
                       removeSlashes(removeExtension(file.path).split('app/')[1]).toLowerCase()+"-"+(p.node.openingElement.name.name).toLowerCase()+'-'+
-                        ++i
+                        i
                     )
                   )
                 ),
